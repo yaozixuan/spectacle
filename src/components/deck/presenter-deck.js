@@ -7,6 +7,7 @@ import { FlexBox, Box } from '../layout';
 import * as queryString from 'query-string';
 import { Timer } from './timer';
 import SpectacleLogo from '../logo';
+import logo from '../logo.png';
 import InternalButton from '../internal-button';
 import { SYSTEM_FONT } from '../../utils/constants';
 import 'broadcastchannel-polyfill';
@@ -141,7 +142,7 @@ const PresenterDeck = props => {
     <PresenterDeckContainer>
       <NotesColumn>
         <FlexBox justifyContent="space-between" paddingTop={10} paddingX={15}>
-          {/*<SpectacleLogo />*/}
+          <img src={logo} width="100" />
           <FlexBox width={0.75} flexDirection="column" alignItems="flex-end">
             <Text
               data-testid="use-browser-tab-text"
@@ -151,7 +152,7 @@ const PresenterDeck = props => {
               padding="0px"
               margin="0px 0px 10px"
             >
-              AAAAAA Open a second browser tab at {window.location.host} to use as the
+              Open a second browser tab at {window.location.host} to use as the
               audience deck
               {!!castButton &&
                 ' or use Chrome’s display cast to present on a secondary display'}
