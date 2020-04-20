@@ -151,7 +151,7 @@ const PresenterDeck = props => {
               padding="0px"
               margin="0px 0px 10px"
             >
-              Open a second browser tab at {window.location.host} to use as the
+              AAAAAA Open a second browser tab at {window.location.host} to use as the
               audience deck
               {!!castButton &&
                 ' or use Chrome’s display cast to present on a secondary display'}
