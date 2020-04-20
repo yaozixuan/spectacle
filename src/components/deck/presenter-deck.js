@@ -141,7 +141,7 @@ const PresenterDeck = props => {
     <PresenterDeckContainer>
       <NotesColumn>
         <FlexBox justifyContent="space-between" paddingTop={10} paddingX={15}>
-          <SpectacleLogo />
+          {/*<SpectacleLogo />*/}
           <FlexBox width={0.75} flexDirection="column" alignItems="flex-end">
             <Text
               data-testid="use-browser-tab-text"
