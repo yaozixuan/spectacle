@@ -114,29 +114,45 @@ const PresenterDeck = props => {
   const nextSlide =
     children.length > currentSlide + 1 ? children[currentSlide + 1] : null;
 
+  // const castButton = React.useMemo(() => {
+  //   if (isReceiver || typeof window.navigator.presentation === 'undefined') {
+  //     return null;
+  //   }
+  //   if (isController) {
+  //     return (
+  //       <InternalButton
+  //         data-testid="Close Connection"
+  //         onClick={terminateConnection}
+  //       >
+  //         Stop Casting
+  //       </InternalButton>
+  //     );
+  //   }
+  //   return (
+  //     <InternalButton
+  //       data-testid="Start Connection"
+  //       onClick={onStartConnection}
+  //     >
+  //       Cast to Secondary Display
+  //     </InternalButton>
+  //   );
+  // }, []);
+
   const castButton = React.useMemo(() => {
-    if (isReceiver || typeof window.navigator.presentation === 'undefined') {
-      return null;
-    }
-    if (isController) {
-      return (
-        <InternalButton
-          data-testid="Close Connection"
-          onClick={terminateConnection}
-        >
-          Stop Casting
-        </InternalButton>
-      );
-    }
     return (
       <InternalButton
-        data-testid="Start Connection"
-        onClick={onStartConnection}
+        onClick={() => {
+          window.open(
+            `/presenter?immediate=${immediate}&slide=${currentSlide}&slideElement=${currentSlideElement}`,
+            'newWindow',
+            'menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1'
+          );
+        }}
       >
-        Cast to Secondary Display
+        Open a audience window
       </InternalButton>
     );
-  }, []);
+  }, [currentSlide, currentSlideElement, immediate]);
 
   return (
     <PresenterDeckContainer>
@@ -152,10 +168,10 @@ const PresenterDeck = props => {
               padding="0px"
               margin="0px 0px 10px"
             >
-              Open a second browser tab at {window.location.host} to use as the
-              audience deck
-              {!!castButton &&
-                ' or use Chrome’s display cast to present on a secondary display'}
+              Open a second browser tab at {window.location.host}/presenter to
+              use as the audience deck
+              {/*{!!castButton &&*/}
+              {/*  ' or use Chrome’s display cast to present on a secondary display'}*/}
               .
             </Text>
             {castButton}
